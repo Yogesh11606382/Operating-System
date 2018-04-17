@@ -1,1 +1,73 @@
 
+#include<stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int i,j,k,n,swap,c,d,g,temp;
+int gift[50];			//number of gifts 
+int student[50];		//student number
+
+printf("\nEnter number of students(<50) : ");
+scanf("%d",&n);
+
+//entering the number of gifts a student picked
+for (i = 0;i<n;i++)
+{
+	printf("Enter the number of gifts picked by student %d : ", (i+1));
+	scanf("%d", &gift[i]);
+}
+
+//printing the student index number
+printf("\nStudent number : \t\t");
+for (i = 0;i<n;i++)
+{
+student[i] = i+1;
+printf("%d\t",student[i]);
+}
+
+
+//printing the number of gifts picked by students
+printf("\nCorresponding Number of gifts : ");
+for (i = 0;i<n;i++)
+{
+printf("%d\t",gift[i]);
+}
+
+//arranging the number of gifts in decreasing order and corresponding student number
+//bubble sorting
+for(j=0 ; j<(n-1) ; j++)
+  {
+    for(k=0 ; k<(n-j-1) ; k++)
+    {
+      if (gift[k] < gift[k+1])
+      {
+        swap   = gift[k];
+        gift[k]   = gift[k+1];
+        gift[k+1] = swap;
+	temp = student[k];
+        student[k]   = student[k+1];
+        student[k+1] = temp;
+      }
+	
+    }
+  }
+
+printf("\n\nOrder for billing");
+
+//for printing the order according to number of gifts
+printf("\n\nAccording to number of gifts : "); 
+for(c = 0; c<n; c++)
+{
+    	printf("%d\t",gift[c]);
+}
+
+//for printing the order according to student number
+printf("\nAccording to student number :   ");
+for(d = 0; d<n; d++)
+{
+    	printf("%d\t",student[d]);
+}
+printf("%s","\n\n");
+return 0;
+}
